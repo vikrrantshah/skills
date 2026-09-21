@@ -15,24 +15,17 @@ Take it from the user's message or from what the conversation already establishe
 
 ## 2. Resolve the branch name
 
-The tracker owns the name wherever it publishes one:
+Fetch the ticket with whatever tracker tooling this environment has, MCP or CLI. Where the tracker publishes a branch name for that ticket (Linear's `gitBranchName`, say), it wins verbatim, prefix included. Otherwise the name is `<ticket-key>-<title-slug>`, or `<description-slug>` when there is no ticket.
 
-| Reference | Lookup | Branch name |
-| --- | --- | --- |
-| Linear (`NX-2867`, `linear.app/…/issue/…`) | Linear MCP `get_issue` | its `gitBranchName`, verbatim |
-| GitHub issue (`#123`, `owner/repo#123`, issue URL) | `gh issue view 123 --json number,title` | `123-<title-slug>` |
-| Jira (`PROJ-123`, `…atlassian.net/browse/…`) | configured Jira MCP or CLI; with neither, ask the user for the summary line | `PROJ-123-<summary-slug>` |
-| Description only | — | `<description-slug>` |
-
-A Linear `gitBranchName` is final: pass it through untouched, prefix included.
-
-Every name you build yourself follows the repo's own convention instead. Read it off the branches that exist:
+Names you build match the repo's convention, read off the branches that exist:
 
 ```bash
 git for-each-ref --sort=-committerdate --count=20 --format='%(refname:short)' refs/heads refs/remotes
 ```
 
-Carry over whatever prefix that shows (`feature/`, `fix/`, a username segment) and match its casing for ticket keys. Slugs are lowercase ASCII, hyphen-separated, truncated at a word boundary so the whole name stays under ~60 characters.
+Carry over the prefix they show (`feature/`, `fix/`, a username segment). Slugs are lowercase ASCII, hyphen-separated, cut at a word boundary to keep the whole name under ~60 characters.
+
+No tooling reaches the tracker → ask the user for the ticket's title and build the name from that.
 
 ## 3. Create the worktree
 
