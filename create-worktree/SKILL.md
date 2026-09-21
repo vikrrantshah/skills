@@ -16,7 +16,7 @@ Take it from the user's message or from what the conversation already establishe
 
 ## 2. Resolve the branch name
 
-Fetch the ticket with whatever tracker tooling this environment has, MCP or CLI. Where the tracker publishes a branch name for that ticket (Linear's `gitBranchName`, say), it wins verbatim, prefix included. Otherwise the name is `<ticket-key>-<title-slug>`, or `<description-slug>` when there is no ticket.
+Fetch the ticket with whatever tracker tooling this environment has, MCP or CLI. Where the tracker publishes its own branch name for that ticket, that name wins verbatim, prefix included. Otherwise the name is `<ticket-key>-<title-slug>`, or `<description-slug>` when there is no ticket.
 
 Names you build match the repo's convention, read off the branches that exist:
 
@@ -44,7 +44,7 @@ wt switch --create <branch> --no-cd --format json -y
 
 ## 4. Start the ticket
 
-The worktree exists, so the work has begun: move the ticket to the state the team uses for work just started, through the same tooling you fetched it with. List the workflow's states when you do not already know that name — a tracker routinely carries several in-progress states (`In Progress`, `In Review`, `UAT`, and `Blocked` all sit under Linear's `started` type), and exactly one of them means coding has begun. Claim the ticket for the user too when nobody owns it yet.
+The worktree exists, so the work has begun: move the ticket to the state that tracker uses for work just started, through the same tooling you fetched it with. Read the workflow's states first when you do not already know that name — a workflow routinely carries several states that all count as in progress, and exactly one of them means coding has begun. Claim the ticket for the user too when nobody owns it yet.
 
 A description with no ticket, or a tracker this environment can only read, leaves nothing to move.
 
