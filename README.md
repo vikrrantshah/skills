@@ -30,6 +30,8 @@ The CLI has no `omp` target; `cline`, `zed`, `warp`, and `dexto` all map to `~/.
 
 ## Skills
 
-| Skill | What it does |
-| --- | --- |
-| [`worktree`](worktree/SKILL.md) | Names a branch from a ticket (Linear / GitHub / Jira) or a description, then creates the branch and worktree with [`wt`](https://worktrunk.dev). |
+| Skill | Invoke | What it does |
+| --- | --- | --- |
+| [`create-worktree`](create-worktree/SKILL.md) | `/create-worktree` in Claude Code, `/skill:create-worktree` in omp | Names a branch from a ticket (Linear / GitHub / Jira) or a description, then creates the branch and worktree with [`wt`](https://worktrunk.dev). |
+
+Every skill here sets `disable-model-invocation: true`, so agents never fire them on their own and they cost nothing in the system prompt. You invoke them by name.

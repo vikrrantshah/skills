@@ -1,9 +1,10 @@
 ---
-name: worktree
-description: Create a branch and its git worktree with the `wt` CLI. Use when starting an implementation, or when handed a ticket (Linear, GitHub, Jira) or a description to build.
+name: create-worktree
+description: Create a branch and its git worktree with the `wt` CLI, from a ticket or a description.
+disable-model-invocation: true
 ---
 
-# Worktree
+# Create Worktree
 
 Turn a piece of work into a branch name, then let `wt` create the worktree for it.
 
