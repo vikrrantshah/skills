@@ -1,12 +1,12 @@
 ---
 name: create-worktree
-description: Create a branch and its git worktree with the `wt` CLI, from a ticket or a description.
+description: Create a branch and its git worktree with the `wt` CLI from a ticket or a description, and move the ticket to in-progress.
 disable-model-invocation: true
 ---
 
 # Create Worktree
 
-Turn a piece of work into a branch name, then let `wt` create the worktree for it.
+Turn a piece of work into a branch name, let `wt` create the worktree for it, and mark the ticket started.
 
 ## 1. Pin the work item
 
@@ -42,6 +42,12 @@ wt switch --create <branch> --no-cd --format json -y
 - Branching off something other than the default branch → add `--base <branch>`.
 - Stale directory at the target path → add `--clobber`.
 
-## 4. Hand back
+## 4. Start the ticket
 
-The skill ends at the worktree. Report the branch, its path, and the ticket it came from, then stop and take the user's next instruction.
+The worktree exists, so the work has begun: move the ticket to the state the team uses for work just started, through the same tooling you fetched it with. List the workflow's states when you do not already know that name — a tracker routinely carries several in-progress states (`In Progress`, `In Review`, `UAT`, and `Blocked` all sit under Linear's `started` type), and exactly one of them means coding has begun. Claim the ticket for the user too when nobody owns it yet.
+
+A description with no ticket, or a tracker this environment can only read, leaves nothing to move.
+
+## 5. Hand back
+
+The skill ends at the worktree. Report the branch, its path, and the ticket it came from with its new state, then stop and take the user's next instruction.

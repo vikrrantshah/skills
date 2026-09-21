@@ -37,7 +37,7 @@ npx skills update
 
 `/create-worktree` in Claude Code, `/skill:create-worktree` in omp.
 
-Resolves a branch name — the tracker's own where it publishes one, otherwise built from the ticket or description against the repo's existing branch convention — then creates that branch and its worktree with [`wt`](https://worktrunk.dev).
+Resolves a branch name — the tracker's own where it publishes one, otherwise built from the ticket or description against the repo's existing branch convention — creates that branch and its worktree with [`wt`](https://worktrunk.dev), then moves the ticket to in-progress and hands back without touching the code.
 
 **Use when:**
 
