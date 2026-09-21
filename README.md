@@ -1,37 +1,46 @@
-# skills
+# Skills
 
-Private Claude Code / agent skills.
+My agent skills, in the [Agent Skills](https://agentskills.io) format: one directory per skill, `<name>/SKILL.md` plus whatever it points at.
 
-Each top-level directory is one skill: `<name>/SKILL.md` plus any files it points at.
+Every skill here is user-invoked (`disable-model-invocation: true`). Nothing fires on its own, and nothing occupies the system prompt until I type its name.
 
-## Install
+## Installation
+
+### On the machine where I author them
 
 ```bash
-./install.sh
+git clone git@github.com:vikrrantshah/skills.git ~/Documents/skills
+~/Documents/skills/install.sh
 ```
 
-Symlinks every skill into each agent's skills directory, so edits here are live with no re-install:
+Symlinks every skill into each agent's skills directory, so an edit here is live with no re-install:
 
 | Agent | Directory |
 | --- | --- |
 | Claude Code | `~/.claude/skills/` |
-| omp | `~/.agents/skills/` — its `agents` provider; omp does not read `~/.claude/skills` unless that foreign provider is enabled |
+| omp | `~/.agents/skills/` |
 
-Override the targets with `SKILLS_DIRS="dir1 dir2" ./install.sh`. Existing real directories are left alone and reported.
+omp reads `~/.agents/skills` through its `agents` provider, and ignores `~/.claude/skills` unless that foreign provider is switched on. Send the links elsewhere with `SKILLS_DIRS="dir1 dir2" ./install.sh`.
 
-On a machine that tracks skills with [`npx skills`](https://github.com/vercel-labs/skills) instead, install copies from the private repo — git/`gh` credentials are picked up automatically:
+### Anywhere else
 
 ```bash
-npx skills add vikrrantshah/skills -g -a claude-code -a cline -y   # cline's global path is ~/.agents/skills, where omp looks
-npx skills update worktree                                         # pull later changes
+npx skills add vikrrantshah/skills -g -a claude-code -a cline
+npx skills update
 ```
 
-The CLI has no `omp` target; `cline`, `zed`, `warp`, and `dexto` all map to `~/.agents/skills/`. Copies go stale until `skills update`, so prefer `install.sh` on the machine where you author.
+[`skills`](https://github.com/vercel-labs/skills) clones this private repo with whatever git or `gh` credentials the machine already has; `GITHUB_TOKEN` is needed only where neither exists. The CLI has no `omp` target, so borrow `cline` (or `zed`, `warp`, `dexto`) — its global path is `~/.agents/skills`, where omp looks. These land as copies, frozen at the last `skills update`.
 
 ## Skills
 
-| Skill | Invoke | What it does |
-| --- | --- | --- |
-| [`create-worktree`](create-worktree/SKILL.md) | `/create-worktree` in Claude Code, `/skill:create-worktree` in omp | Names a branch from a ticket (Linear / GitHub / Jira) or a description, then creates the branch and worktree with [`wt`](https://worktrunk.dev). |
+### create-worktree
 
-Every skill here sets `disable-model-invocation: true`, so agents never fire them on their own and they cost nothing in the system prompt. You invoke them by name.
+`/create-worktree` in Claude Code, `/skill:create-worktree` in omp.
+
+Resolves a branch name — the tracker's own where it publishes one, otherwise built from the ticket or description against the repo's existing branch convention — then creates that branch and its worktree with [`wt`](https://worktrunk.dev).
+
+**Use when:**
+
+- Starting an implementation from a ticket, on any tracker
+- Starting one from a description, with no ticket at all
+- Picking work back up: re-running switches to the existing worktree instead of creating a second one
