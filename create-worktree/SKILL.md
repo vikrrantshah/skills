@@ -44,4 +44,4 @@ wt switch --create <branch> --no-cd --format json -y
 
 ## 4. Hand back
 
-Report the branch, the worktree path, and the ticket it came from. Then continue the actual implementation inside that worktree.
+The skill ends at the worktree. Report the branch, its path, and the ticket it came from, then stop and take the user's next instruction — research, a plan, or implementation, their call.
