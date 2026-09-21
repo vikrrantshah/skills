@@ -1,6 +1,6 @@
 ---
 name: worktree
-description: Create a branch and its git worktree with the `wt` CLI, named from a tracker ticket or a description. Use when starting an implementation, when asked for a worktree, or when handed a ticket to work on (Linear, GitHub issue, Jira, or plain prose).
+description: Create a branch and its git worktree with the `wt` CLI. Use when starting an implementation, or when handed a ticket (Linear, GitHub, Jira) or a description to build.
 ---
 
 # Worktree
