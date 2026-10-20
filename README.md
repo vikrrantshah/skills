@@ -44,3 +44,9 @@ Resolves a branch name — the tracker's own where it publishes one, otherwise b
 - Starting an implementation from a ticket, on any tracker
 - Starting one from a description, with no ticket at all
 - Picking work back up: re-running switches to the existing worktree instead of creating a second one
+
+### pitch-sheet
+
+`/pitch-sheet` in Claude Code, `/skill:pitch-sheet` in omp.
+
+Builds a playful, scroll-scrubbed pitch page with GSAP-pinned scenes, hand-marker captions, and a pixel-art mascot. Includes a reusable visual kit, a CSS checker, and a browser verification workflow for desktop and phone widths.
