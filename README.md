@@ -50,3 +50,10 @@ Resolves a branch name — the tracker's own where it publishes one, otherwise b
 `/pitch-sheet` in Claude Code, `/skill:pitch-sheet` in omp.
 
 Builds a playful, scroll-scrubbed pitch page with GSAP-pinned scenes, hand-marker captions, and a pixel-art mascot. Includes a reusable visual kit, a CSS checker, and a browser verification workflow for desktop and phone widths.
+
+## Skills by other authors
+
+Skills by other authors I like to use:
+
+- [brag](https://github.com/latent-spaces/brag)
+- [Matt Pocock's skills](https://github.com/mattpocock/skills)
