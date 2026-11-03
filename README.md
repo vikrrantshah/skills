@@ -51,6 +51,18 @@ Resolves a branch name — the tracker's own where it publishes one, otherwise b
 
 Builds a playful, scroll-scrubbed pitch page with GSAP-pinned scenes, hand-marker captions, and a pixel-art mascot. Includes a reusable visual kit, a CSS checker, and a browser verification workflow for desktop and phone widths.
 
+### ticket-waves
+
+`/ticket-waves` in Claude Code, `/skill:ticket-waves` in omp.
+
+Draws an ASCII ticket tree from explicit blocking relationships. Each level contains tickets that can run in parallel after earlier levels finish. Reads tickets without changing them.
+
+Accepts ticket lists, parent tickets, projects, or milestones. Includes unfinished prerequisites and reports cycles or unresolved blockers without giving blocked tickets an executable level.
+
+Example: `/ticket-waves NX-123 and its subtasks`
+
+Requires Node.js for the bundled dependency renderer. Tracker access uses the agent's available MCP or CLI tools.
+
 ## Skills by other authors
 
 Skills by other authors I like to use:
