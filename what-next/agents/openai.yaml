@@ -1,0 +1,5 @@
+interface:
+  display_name: "What Next"
+  short_description: "Recover context and identify the next action and its owner"
+policy:
+  allow_implicit_invocation: false

@@ -63,6 +63,14 @@ Example: `/ticket-waves NX-123 and its subtasks`
 
 Requires Node.js for the bundled dependency renderer. Tracker access uses the agent's available MCP or CLI tools.
 
+### what-next
+
+`/what-next` in Claude Code, `/skill:what-next` in omp.
+
+Recovers session context and identifies the exact next action, with human or agent ownership. Reports blockers and follow-on actions without executing them.
+
+Defaults to the current session. Accepts an explicit session or workstream, including several sessions when history access is available.
+
 ## Skills by other authors
 
 Skills by other authors I like to use:
