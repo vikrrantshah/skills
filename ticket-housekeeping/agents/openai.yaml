@@ -1,0 +1,5 @@
+interface:
+  display_name: "Ticket Housekeeping"
+  short_description: "Reconcile a ticket with confirmed work"
+policy:
+  allow_implicit_invocation: false

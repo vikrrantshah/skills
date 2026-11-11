@@ -44,6 +44,15 @@ If blocked on an external event, identify the responsible party or system and th
 If an agent already performs the next action, mark it **in progress** instead of recommending duplicate work.
 If the requested goal is complete, say **Done**. Include a next action only for a remaining obligation within the agreed scope.
 
+### Optional ticket housekeeping
+
+Keep delivery completion separate from ticket bookkeeping. A stale tracker status alone does not make completed delivery unfinished.
+When a completed goal has a ticket, use a bounded read-only lookup to check whether its status and completion evidence match.
+If a gap exists, or reconciliation remains unverified, offer **Optional · Agent:** Preview ticket housekeeping with `ticket-housekeeping <ticket>`.
+Name confirmed gaps; label unknown tracker state as unverified. Keep **Done** as the primary result.
+If the ticket already matches the confirmed outcome, omit the offer. For work without a ticket, omit it too.
+This offer is not a required next action. The user chooses whether to invoke the separate skill; do not invoke it automatically.
+
 ## Reply
 
 Put the immediate action first. Use this shape, omitting empty sections:
@@ -54,6 +63,7 @@ Put the immediate action first. Use this shape, omitting empty sections:
 **Blocked / unknown:** The blocker or missing evidence, who can resolve it, and the condition for resuming.
 
 For a completed goal, replace **Next** with **Done:** and the confirmed outcome.
+When appropriate, append the optional housekeeping offer after **Done**, within the same word limit.
 Keep the reply under 180 words for one session. Prefer fewer actions to a speculative backlog.
 Attach paths, issue IDs, commands, or links to the action they support. Distinguish confirmed facts from unverified claims.
 Include both human and agent work only when each has a real remaining responsibility.

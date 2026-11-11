@@ -71,6 +71,20 @@ Recovers session context and identifies the exact next action, with human or age
 
 Defaults to the current session. Accepts an explicit session or workstream, including several sessions when history access is available.
 
+After completed ticket work, it can suggest optional `ticket-housekeeping`. This does not change its read-only behavior.
+
+### ticket-housekeeping
+
+`/ticket-housekeeping` in Claude Code, `/skill:ticket-housekeeping` in omp.
+
+Reconciles a ticket's status, completion evidence, and acceptance checklist with confirmed work. Keeps required delivery separate from optional bookkeeping.
+
+The default is a read-only preview. Add `--apply` to write the updates. Repeated runs skip unchanged fields and duplicate comments.
+
+Example: `/skill:ticket-housekeeping NX-123 --apply`
+
+Uses the available tracker tools. Leaves incomplete tickets open when acceptance criteria remain unverified.
+
 ## Skills by other authors
 
 Skills by other authors I like to use:
