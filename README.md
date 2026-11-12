@@ -23,8 +23,6 @@ The `claude-code` target installs into `~/.claude/skills`.
 
 ### create-worktree
 
-`/create-worktree` in Claude Code, `/skill:create-worktree` in omp.
-
 Resolves a branch name — the tracker's own where it publishes one, otherwise built from the ticket or description against the repo's existing branch convention — creates that branch and its worktree with [`wt`](https://worktrunk.dev), then moves the ticket to in-progress and hands back without touching the code.
 
 **Use when:**
@@ -35,25 +33,19 @@ Resolves a branch name — the tracker's own where it publishes one, otherwise b
 
 ### pitch-sheet
 
-`/pitch-sheet` in Claude Code, `/skill:pitch-sheet` in omp.
-
 Builds a playful, scroll-scrubbed pitch page with GSAP-pinned scenes, hand-marker captions, and a pixel-art mascot. Includes a reusable visual kit, a CSS checker, and a browser verification workflow for desktop and phone widths.
 
 ### ticket-waves
-
-`/ticket-waves` in Claude Code, `/skill:ticket-waves` in omp.
 
 Draws an ASCII ticket tree from explicit blocking relationships. Each level contains tickets that can run in parallel after earlier levels finish. Reads tickets without changing them.
 
 Accepts ticket lists, parent tickets, projects, or milestones. Includes unfinished prerequisites and reports cycles or unresolved blockers without giving blocked tickets an executable level.
 
-Example: `/ticket-waves NX-123 and its subtasks`
+Example: `/ticket-waves APP-123 and its subtasks`
 
 Requires Node.js for the bundled dependency renderer. Tracker access uses the agent's available MCP or CLI tools.
 
 ### brief-me
-
-`/brief-me` in Claude Code, `/skill:brief-me` in omp.
 
 Explains the work with an unlabelled, one-to-three-line goal summary first, then only the context, confirmed progress, and remaining work the user needs.
 Uses ASD-STE100 writing rules for clear, concise language without claiming unchecked compliance.
@@ -61,11 +53,9 @@ Uses ASD-STE100 writing rules for clear, concise language without claiming unche
 Accepts a ticket, goal, or workstream. Defaults to the current conversation and uses the same format with or without a ticket.
 Read-only: it explains the work without continuing implementation or updating the tracker.
 
-Examples: `/skill:brief-me APP-42` or `/skill:brief-me remind me what we are working toward and what remains`
+Examples: `/brief-me APP-42` or `/brief-me remind me what we are working toward and what remains`
 
 ### what-next
-
-`/what-next` in Claude Code, `/skill:what-next` in omp.
 
 Recovers session context and identifies the exact next action, with human or agent ownership. Reports blockers and follow-on actions without executing them.
 
@@ -75,13 +65,11 @@ After completed ticket work, it can suggest optional `ticket-housekeeping`. This
 
 ### ticket-housekeeping
 
-`/ticket-housekeeping` in Claude Code, `/skill:ticket-housekeeping` in omp.
-
 Reconciles a ticket's status, completion evidence, and acceptance checklist with confirmed work. Keeps required delivery separate from optional bookkeeping.
 
 The default is a read-only preview. Add `--apply` to write the updates. Repeated runs skip unchanged fields and duplicate comments.
 
-Example: `/skill:ticket-housekeeping NX-123 --apply`
+Example: `/ticket-housekeeping APP-123 --apply`
 
 Uses the available tracker tools. Leaves incomplete tickets open when acceptance criteria remain unverified.
 

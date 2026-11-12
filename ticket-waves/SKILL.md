@@ -45,10 +45,10 @@ Write a temporary JSON file with this shape:
 ```json
 {
   "tickets": [
-    {"id": "NX-1", "title": "Define contract", "state": "open", "blockedBy": []},
-    {"id": "NX-2", "title": "Build API", "state": "open", "blockedBy": ["NX-1"]},
-    {"id": "NX-3", "title": "Build client", "state": "open", "blockedBy": ["NX-1"]},
-    {"id": "NX-4", "title": "Integrate", "state": "open", "blockedBy": ["NX-2", "NX-3"]}
+    {"id": "APP-1", "title": "Define contract", "state": "open", "blockedBy": []},
+    {"id": "APP-2", "title": "Build API", "state": "open", "blockedBy": ["APP-1"]},
+    {"id": "APP-3", "title": "Build client", "state": "open", "blockedBy": ["APP-1"]},
+    {"id": "APP-4", "title": "Integrate", "state": "open", "blockedBy": ["APP-2", "APP-3"]}
   ]
 }
 ```
