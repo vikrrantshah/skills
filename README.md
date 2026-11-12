@@ -63,6 +63,18 @@ Example: `/ticket-waves NX-123 and its subtasks`
 
 Requires Node.js for the bundled dependency renderer. Tracker access uses the agent's available MCP or CLI tools.
 
+### brief-me
+
+`/brief-me` in Claude Code, `/skill:brief-me` in omp.
+
+Explains the work with an unlabelled, one-to-three-line goal summary first, then only the context, confirmed progress, and remaining work the user needs.
+Uses ASD-STE100 writing rules for clear, concise language without claiming unchecked compliance.
+
+Accepts a ticket, goal, or workstream. Defaults to the current conversation and uses the same format with or without a ticket.
+Read-only: it explains the work without continuing implementation or updating the tracker.
+
+Examples: `/skill:brief-me APP-42` or `/skill:brief-me remind me what we are working toward and what remains`
+
 ### what-next
 
 `/what-next` in Claude Code, `/skill:what-next` in omp.

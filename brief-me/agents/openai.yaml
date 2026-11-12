@@ -1,0 +1,5 @@
+interface:
+  display_name: "Brief Me"
+  short_description: "Explain the goal, current state, and remaining work clearly"
+policy:
+  allow_implicit_invocation: false
