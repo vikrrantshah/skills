@@ -6,30 +6,18 @@ Every skill here is user-invoked (`disable-model-invocation: true`). Nothing fir
 
 ## Installation
 
-### On the machine where I author them
-
-```bash
-git clone git@github.com:vikrrantshah/skills.git ~/Documents/skills
-~/Documents/skills/install.sh
-```
-
-Symlinks every skill into each agent's skills directory, so an edit here is live with no re-install:
-
-| Agent | Directory |
-| --- | --- |
-| Claude Code | `~/.claude/skills/` |
-| omp | `~/.agents/skills/` |
-
-omp reads `~/.agents/skills` through its `agents` provider, and ignores `~/.claude/skills` unless that foreign provider is switched on. Send the links elsewhere with `SKILLS_DIRS="dir1 dir2" ./install.sh`.
-
-### Anywhere else
-
 ```bash
 npx skills add vikrrantshah/skills -g -a claude-code -a cline
-npx skills update
+npx skills update --global
 ```
 
-[`skills`](https://github.com/vercel-labs/skills) clones this private repo with whatever git or `gh` credentials the machine already has; `GITHUB_TOKEN` is needed only where neither exists. The CLI has no `omp` target, so borrow `cline` (or `zed`, `warp`, `dexto`) — its global path is `~/.agents/skills`, where omp looks. These land as copies, frozen at the last `skills update`.
+Installs at user scope. Use `npx skills add` to install new skills; `npx skills update --global` refreshes skills already installed.
+
+The CLI has no `omp` target. Use `cline` (or `zed`, `warp`, `dexto`) to install into `~/.agents/skills`, where omp looks.
+The `claude-code` target installs into `~/.claude/skills`.
+
+[`skills`](https://github.com/vercel-labs/skills) accesses this private repo through the machine's git or `gh` credentials.
+`GITHUB_TOKEN` is needed only when neither is available. Run the update command to get later changes.
 
 ## Skills
 
