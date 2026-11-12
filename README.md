@@ -37,9 +37,9 @@ Builds a playful, scroll-scrubbed pitch page with GSAP-pinned scenes, hand-marke
 
 ### ticket-waves
 
-Draws an ASCII ticket tree from explicit blocking relationships. Each level contains tickets that can run in parallel after earlier levels finish. Reads tickets without changing them.
+Draws a horizontal ticket graph whose columns are execution waves, with blocking and parent/child relationships as edges. Each wave contains tickets that can run in parallel after earlier waves finish; a parent always lands after all its children. Reads tickets without changing them.
 
-Accepts ticket lists, parent tickets, projects, or milestones. Includes unfinished prerequisites and reports cycles or unresolved blockers without giving blocked tickets an executable level.
+Accepts ticket lists, parent tickets, projects, or milestones. Includes unfinished prerequisites and reports cycles or unresolved blockers without assigning blocked tickets to a wave.
 
 Example: `/ticket-waves APP-123 and its subtasks`
 
