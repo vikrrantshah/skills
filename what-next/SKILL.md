@@ -1,6 +1,6 @@
 ---
 name: what-next
-description: Recover session context and identify the exact next action, with human or agent ownership.
+description: Recover session context and identify the exact next action and its owner (user, agent, named teammate, system, or external party).
 argument-hint: "Optional: session or workstream to inspect"
 disable-model-invocation: true
 ---
@@ -29,19 +29,31 @@ Choose one immediate action that advances the goal or removes its first blocking
 Prefer ready work over work that depends on an unfinished step.
 For several ready actions, prefer the action that unblocks the rest. Use explicit user priorities first.
 
-Assign each action to an owner:
+Assign each action exactly one owner:
 
+- **User**: the person working with this agent. Covers decisions, approvals, credential entry, physical tasks,
+  and actions that need the user's access or authority.
 - **Agent**: investigation, implementation, checks, or other work the agent can perform with available tools and authority.
-- **Human**: a required decision, approval, credential entry, physical task, or action outside the agent's access or authority.
-  Name the person or role only when the evidence identifies them. Do not infer that the user owns every human task.
+- **Teammate: <Name>**: a named member of the user's team or organization, such as a PR reviewer, ticket assignee, or code owner.
+  Always use the person's name from the evidence. If the owner is unnamed and a tool can identify them
+  (ticket assignee, requested reviewers, CODEOWNERS), identifying them is Agent work. Otherwise the action is User: name the owner.
+- **System**: a process the work waits on, such as a CI run, `gh run`, build, deploy, queue, or scheduled job.
+  Name the exact run, job, or URL and the result that lets work continue.
+- **External: <Party>**: a person or organization outside the user's organization, such as a vendor, customer,
+  upstream maintainer, or support desk. Name the party when evidence identifies it; otherwise name the role.
 
-A missing fact the agent can retrieve is agent work, not a question for the user.
-For human decisions, state the exact question, the material choices, and a recommendation when evidence supports one.
-For human actions, name the exact target and the observable result that permits work to continue.
+Do not assign a teammate's or external party's task to the user.
+If a named person's affiliation is unverified, use Teammate and mark the affiliation unverified.
+
+A missing fact the agent can retrieve is Agent work, not a question for the user.
+For User or Teammate decisions, state the exact question, the material choices, and a recommendation when evidence supports one.
+For User or Teammate actions, name the exact target and the observable result that permits work to continue.
 Include a command only when its syntax and target are supported by the inspected context.
 
-If blocked on an external event, identify the responsible party or system and the condition for resuming.
-If an agent already performs the next action, mark it **in progress** instead of recommending duplicate work.
+System and External owners mean waiting. Prefer a ready User, Agent, or Teammate action over a wait.
+When nothing else is ready, make the wait the next action: name the run or party, the condition for resuming,
+and who acts once it resolves. A nudge, such as a reminder to an external party, belongs to whoever sends it.
+If an agent or system process is already doing the next action, mark it **in progress** instead of recommending duplicate work or a rerun.
 If the requested goal is complete, say **Done**. Include a next action only for a remaining obligation within the agreed scope.
 
 ### Optional ticket housekeeping
@@ -57,16 +69,17 @@ This offer is not a required next action. The user chooses whether to invoke the
 
 Put the immediate action first. Use this shape, omitting empty sections:
 
-**Next · Human/Agent:** One concrete action, its exact target, and its completion condition.
+**Next · Owner:** One concrete action, its exact target, and its completion condition.
+Owner is one of `User`, `Agent`, `Teammate: <Name>`, `System`, or `External: <Party>`.
 **Context:** One sentence naming the goal and the last confirmed result.
-**Then:** Up to three ordered actions, each with Human/Agent ownership and any prerequisite.
+**Then:** Up to three ordered actions, each with its owner and any prerequisite.
 **Blocked / unknown:** The blocker or missing evidence, who can resolve it, and the condition for resuming.
 
 For a completed goal, replace **Next** with **Done:** and the confirmed outcome.
 When appropriate, append the optional housekeeping offer after **Done**, within the same word limit.
 Keep the reply under 180 words for one session. Prefer fewer actions to a speculative backlog.
 Attach paths, issue IDs, commands, or links to the action they support. Distinguish confirmed facts from unverified claims.
-Include both human and agent work only when each has a real remaining responsibility.
+Include several owners only when each has a real remaining responsibility.
 
 When the user requests several sessions, give one compact row per session:
 

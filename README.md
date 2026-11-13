@@ -57,7 +57,7 @@ Examples: `/brief-me APP-42` or `/brief-me remind me what we are working toward 
 
 ### what-next
 
-Recovers session context and identifies the exact next action, with human or agent ownership. Reports blockers and follow-on actions without executing them.
+Recovers session context and identifies the exact next action and its owner: user, agent, named teammate, system (CI run, job, deploy), or external party. Reports blockers and follow-on actions without executing them.
 
 Defaults to the current session. Accepts an explicit session or workstream, including several sessions when history access is available.
 
